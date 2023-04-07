@@ -6,5 +6,10 @@ namespace MinVideoEditor
         {
             InitializeComponent();
         }
+
+        private void openVideoBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

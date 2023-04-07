@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "MinVideoEditor/1.0.0": {
+        "dependencies": {
+          "NReco.VideoConverter": "1.2.0"
+        },
+        "runtime": {
+          "MinVideoEditor.dll": {}
+        }
+      },
+      "NReco.VideoConverter/1.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/NReco.VideoConverter.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MinVideoEditor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NReco.VideoConverter/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7xukVIt2vaXwLlRWS4Vq3U9vFrhM15zrGkIzFZ71zCf1/YiApq1vJ0mLFFsztYJgD1QRkb79N3pe/asqZHMLiA==",
+      "path": "nreco.videoconverter/1.2.0",
+      "hashPath": "nreco.videoconverter.1.2.0.nupkg.sha512"
+    }
+  }
+}
