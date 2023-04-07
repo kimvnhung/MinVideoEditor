@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+HXigBxsRYOd0aOjM2fF2t1jB//AhAAsEE4Z2K3y54vtd+WQYcNZIMvZqExMZUHiibp2e0VsgKeNLZs6xmKsow==",
+  "success": true,
+  "projectFilePath": "D:\\mingroup\\code\\MinVideoEditor\\MinVideoEditor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\nreco.videoconverter\\1.2.0\\nreco.videoconverter.1.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
