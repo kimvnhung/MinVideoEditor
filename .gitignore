@@ -1,0 +1,44 @@
+# .NET Core
+*.dll
+*.exe
+*.pdb
+*.user
+*.vs/
+bin/
+obj/
+TestResults/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Oo]bj/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+# Uncomment if using VSCode
+#.vscode/
+# Enable if using NCrunch
+#_*[Tt]est*
+# Test output folder
+TestResults/
+# Resharper cache/temporary files
+_ReSharper*/
+*.resharper
+# DocFX documentation
+_docfx/
+# Click-Once manifests
+publish/
+*.manifest
+*.application
+# WPF:
+# No Backup Files
+[Bb]ackup[dD]ancer/
+#No ImageMagick Files
+ImageMagick.Magick.NET-Q16-HDRI-x64/
+ImageMagick.Shared-Q16-HDRI-x64/
+
