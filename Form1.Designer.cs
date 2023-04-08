@@ -32,8 +32,10 @@
             groupBox1 = new GroupBox();
             videoListLv = new ListView();
             label1 = new Label();
-            randomBtn = new CheckBox();
+            randomCb = new CheckBox();
             configGrB = new GroupBox();
+            videoEndGrp = new GroupBox();
+            videoStartGrp = new GroupBox();
             randomConcatCbb = new CheckBox();
             changeVoiceBtn = new CheckBox();
             insertVoiceCbb = new CheckBox();
@@ -43,14 +45,13 @@
             numericUpDown2 = new NumericUpDown();
             speedVideoCbb = new CheckBox();
             numericUpDown1 = new NumericUpDown();
-            videoStartGrp = new GroupBox();
-            videoEndGrp = new GroupBox();
-            numericUpDown3 = new NumericUpDown();
+            amountNud = new NumericUpDown();
+            columnHeader1 = new ColumnHeader();
             groupBox1.SuspendLayout();
             configGrB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)amountNud).BeginInit();
             SuspendLayout();
             // 
             // openVideoBtn
@@ -75,11 +76,13 @@
             // 
             // videoListLv
             // 
+            videoListLv.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             videoListLv.Location = new Point(6, 22);
             videoListLv.Name = "videoListLv";
             videoListLv.Size = new Size(244, 376);
             videoListLv.TabIndex = 0;
             videoListLv.UseCompatibleStateImageBehavior = false;
+            videoListLv.View = View.Details;
             // 
             // label1
             // 
@@ -90,15 +93,15 @@
             label1.TabIndex = 4;
             label1.Text = "Số lượng";
             // 
-            // randomBtn
+            // randomCb
             // 
-            randomBtn.AutoSize = true;
-            randomBtn.Location = new Point(321, 60);
-            randomBtn.Name = "randomBtn";
-            randomBtn.Size = new Size(88, 19);
-            randomBtn.TabIndex = 6;
-            randomBtn.Text = "Ngẫu nhiên";
-            randomBtn.UseVisualStyleBackColor = true;
+            randomCb.AutoSize = true;
+            randomCb.Location = new Point(321, 60);
+            randomCb.Name = "randomCb";
+            randomCb.Size = new Size(88, 19);
+            randomCb.TabIndex = 6;
+            randomCb.Text = "Ngẫu nhiên";
+            randomCb.UseVisualStyleBackColor = true;
             // 
             // configGrB
             // 
@@ -119,6 +122,24 @@
             configGrB.TabIndex = 7;
             configGrB.TabStop = false;
             configGrB.Text = "Cấu hình ";
+            // 
+            // videoEndGrp
+            // 
+            videoEndGrp.Location = new Point(238, 164);
+            videoEndGrp.Name = "videoEndGrp";
+            videoEndGrp.Size = new Size(164, 189);
+            videoEndGrp.TabIndex = 12;
+            videoEndGrp.TabStop = false;
+            videoEndGrp.Text = "Video cuối";
+            // 
+            // videoStartGrp
+            // 
+            videoStartGrp.Location = new Point(68, 164);
+            videoStartGrp.Name = "videoStartGrp";
+            videoStartGrp.Size = new Size(164, 183);
+            videoStartGrp.TabIndex = 11;
+            videoStartGrp.TabStop = false;
+            videoStartGrp.Text = "Video đầu";
             // 
             // randomConcatCbb
             // 
@@ -205,51 +226,38 @@
             numericUpDown1.TabIndex = 1;
             numericUpDown1.TextAlign = HorizontalAlignment.Center;
             // 
-            // videoStartGrp
+            // amountNud
             // 
-            videoStartGrp.Location = new Point(68, 164);
-            videoStartGrp.Name = "videoStartGrp";
-            videoStartGrp.Size = new Size(164, 183);
-            videoStartGrp.TabIndex = 11;
-            videoStartGrp.TabStop = false;
-            videoStartGrp.Text = "Video đầu";
+            amountNud.Location = new Point(381, 31);
+            amountNud.Name = "amountNud";
+            amountNud.Size = new Size(57, 23);
+            amountNud.TabIndex = 8;
+            amountNud.TextAlign = HorizontalAlignment.Center;
             // 
-            // videoEndGrp
+            // columnHeader1
             // 
-            videoEndGrp.Location = new Point(238, 164);
-            videoEndGrp.Name = "videoEndGrp";
-            videoEndGrp.Size = new Size(164, 189);
-            videoEndGrp.TabIndex = 12;
-            videoEndGrp.TabStop = false;
-            videoEndGrp.Text = "Video cuối";
-            // 
-            // numericUpDown3
-            // 
-            numericUpDown3.Location = new Point(381, 31);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(57, 23);
-            numericUpDown3.TabIndex = 8;
-            numericUpDown3.TextAlign = HorizontalAlignment.Center;
+            columnHeader1.Width = 240;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(numericUpDown3);
+            Controls.Add(amountNud);
             Controls.Add(configGrB);
-            Controls.Add(randomBtn);
+            Controls.Add(randomCb);
             Controls.Add(label1);
             Controls.Add(openVideoBtn);
             Controls.Add(groupBox1);
             Name = "Form1";
             Text = "MinVideoEditor";
+            FormClosing += Form1_FormClosing;
             groupBox1.ResumeLayout(false);
             configGrB.ResumeLayout(false);
             configGrB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)amountNud).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -260,7 +268,7 @@
         private GroupBox groupBox1;
         private ListView videoListLv;
         private Label label1;
-        private CheckBox randomBtn;
+        private CheckBox randomCb;
         private GroupBox configGrB;
         private CheckBox randomConcatCbb;
         private CheckBox changeVoiceBtn;
@@ -273,6 +281,7 @@
         private NumericUpDown numericUpDown1;
         private GroupBox videoEndGrp;
         private GroupBox videoStartGrp;
-        private NumericUpDown numericUpDown3;
+        private NumericUpDown amountNud;
+        private ColumnHeader columnHeader1;
     }
 }

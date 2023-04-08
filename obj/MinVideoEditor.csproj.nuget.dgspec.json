@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\mingroup\\code\\MinVideoEditor\\MinVideoEditor.csproj": {}
+    "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj": {}
   },
   "projects": {
-    "D:\\mingroup\\code\\MinVideoEditor\\MinVideoEditor.csproj": {
+    "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\mingroup\\code\\MinVideoEditor\\MinVideoEditor.csproj",
+        "projectUniqueName": "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj",
         "projectName": "MinVideoEditor",
-        "projectPath": "D:\\mingroup\\code\\MinVideoEditor\\MinVideoEditor.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\mingroup\\code\\MinVideoEditor\\obj\\",
+        "projectPath": "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj",
+        "packagesPath": "C:\\Users\\kimvn\\.nuget\\packages\\",
+        "outputPath": "E:\\Datn\\MinVideoEditor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kimvn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,10 @@
             "NReco.VideoConverter": {
               "target": "Package",
               "version": "[1.2.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
