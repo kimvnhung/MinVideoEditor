@@ -1,4 +1,4 @@
-﻿using MinVideoEditor.Interfaces;
+﻿
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MinVideoEditor.Workers
 {
-    public class SpeedConfig : IConfig
+    public class SpeedConfig 
     {
         
         public SpeedConfig(double min, double max)

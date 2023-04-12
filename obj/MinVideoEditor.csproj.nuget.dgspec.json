@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj": {}
+    "F:\\MinGroup\\MinVideoEditor\\MinVideoEditor.csproj": {}
   },
   "projects": {
-    "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj": {
+    "F:\\MinGroup\\MinVideoEditor\\MinVideoEditor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj",
+        "projectUniqueName": "F:\\MinGroup\\MinVideoEditor\\MinVideoEditor.csproj",
         "projectName": "MinVideoEditor",
-        "projectPath": "E:\\Datn\\MinVideoEditor\\MinVideoEditor.csproj",
-        "packagesPath": "C:\\Users\\kimvn\\.nuget\\packages\\",
-        "outputPath": "E:\\Datn\\MinVideoEditor\\obj\\",
+        "projectPath": "F:\\MinGroup\\MinVideoEditor\\MinVideoEditor.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "F:\\MinGroup\\MinVideoEditor\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kimvn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,6 +45,10 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "MediaToolkit": {
+              "target": "Package",
+              "version": "[1.1.0.1, )"
+            },
             "NReco.VideoConverter": {
               "target": "Package",
               "version": "[1.2.0, )"

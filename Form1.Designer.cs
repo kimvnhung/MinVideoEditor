@@ -36,21 +36,27 @@
             randomCb = new CheckBox();
             configGrB = new GroupBox();
             videoEndGrp = new GroupBox();
+            endBoxList = new CheckedListBox();
             videoStartGrp = new GroupBox();
+            startBoxList = new CheckedListBox();
             randomConcatCbb = new CheckBox();
             changeVoiceBtn = new CheckBox();
             insertVoiceCbb = new CheckBox();
             femaleVoiceCbb = new CheckBox();
             maleVoiceCbb = new CheckBox();
             label2 = new Label();
-            numericUpDown2 = new NumericUpDown();
+            maxSpeedNud = new NumericUpDown();
             speedVideoCbb = new CheckBox();
-            numericUpDown1 = new NumericUpDown();
+            minSpeedNud = new NumericUpDown();
             amountNud = new NumericUpDown();
+            startGenerateBtn = new Button();
+            processBar = new ProgressBar();
             groupBox1.SuspendLayout();
             configGrB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            videoEndGrp.SuspendLayout();
+            videoStartGrp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)maxSpeedNud).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)minSpeedNud).BeginInit();
             ((System.ComponentModel.ISupportInitialize)amountNud).BeginInit();
             SuspendLayout();
             // 
@@ -69,7 +75,7 @@
             groupBox1.Controls.Add(videoListLv);
             groupBox1.Location = new Point(12, 34);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(256, 404);
+            groupBox1.Size = new Size(286, 815);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách";
@@ -79,7 +85,7 @@
             videoListLv.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
             videoListLv.Location = new Point(6, 22);
             videoListLv.Name = "videoListLv";
-            videoListLv.Size = new Size(244, 376);
+            videoListLv.Size = new Size(274, 787);
             videoListLv.TabIndex = 0;
             videoListLv.UseCompatibleStateImageBehavior = false;
             videoListLv.View = View.Details;
@@ -110,6 +116,7 @@
             // 
             // configGrB
             // 
+            configGrB.Controls.Add(processBar);
             configGrB.Controls.Add(videoEndGrp);
             configGrB.Controls.Add(videoStartGrp);
             configGrB.Controls.Add(randomConcatCbb);
@@ -118,33 +125,53 @@
             configGrB.Controls.Add(femaleVoiceCbb);
             configGrB.Controls.Add(maleVoiceCbb);
             configGrB.Controls.Add(label2);
-            configGrB.Controls.Add(numericUpDown2);
+            configGrB.Controls.Add(maxSpeedNud);
             configGrB.Controls.Add(speedVideoCbb);
-            configGrB.Controls.Add(numericUpDown1);
+            configGrB.Controls.Add(minSpeedNud);
             configGrB.Location = new Point(321, 85);
             configGrB.Name = "configGrB";
-            configGrB.Size = new Size(467, 353);
+            configGrB.Size = new Size(1451, 764);
             configGrB.TabIndex = 7;
             configGrB.TabStop = false;
             configGrB.Text = "Cấu hình ";
             // 
             // videoEndGrp
             // 
-            videoEndGrp.Location = new Point(238, 164);
+            videoEndGrp.Controls.Add(endBoxList);
+            videoEndGrp.Location = new Point(424, 164);
             videoEndGrp.Name = "videoEndGrp";
-            videoEndGrp.Size = new Size(164, 189);
+            videoEndGrp.Size = new Size(350, 300);
             videoEndGrp.TabIndex = 12;
             videoEndGrp.TabStop = false;
             videoEndGrp.Text = "Video cuối";
             // 
+            // endBoxList
+            // 
+            endBoxList.Dock = DockStyle.Fill;
+            endBoxList.FormattingEnabled = true;
+            endBoxList.Location = new Point(3, 19);
+            endBoxList.Name = "endBoxList";
+            endBoxList.Size = new Size(344, 278);
+            endBoxList.TabIndex = 0;
+            // 
             // videoStartGrp
             // 
+            videoStartGrp.Controls.Add(startBoxList);
             videoStartGrp.Location = new Point(68, 164);
             videoStartGrp.Name = "videoStartGrp";
-            videoStartGrp.Size = new Size(164, 183);
+            videoStartGrp.Size = new Size(350, 300);
             videoStartGrp.TabIndex = 11;
             videoStartGrp.TabStop = false;
             videoStartGrp.Text = "Video đầu";
+            // 
+            // startBoxList
+            // 
+            startBoxList.Dock = DockStyle.Fill;
+            startBoxList.FormattingEnabled = true;
+            startBoxList.Location = new Point(3, 19);
+            startBoxList.Name = "startBoxList";
+            startBoxList.Size = new Size(344, 278);
+            startBoxList.TabIndex = 0;
             // 
             // randomConcatCbb
             // 
@@ -155,6 +182,7 @@
             randomConcatCbb.TabIndex = 10;
             randomConcatCbb.Text = "Ghép ngẫu nhiên";
             randomConcatCbb.UseVisualStyleBackColor = true;
+            randomConcatCbb.CheckedChanged += randomConcatCbb_CheckedChanged;
             // 
             // changeVoiceBtn
             // 
@@ -165,6 +193,7 @@
             changeVoiceBtn.TabIndex = 9;
             changeVoiceBtn.Text = "Thay đổi âm thanh: ";
             changeVoiceBtn.UseVisualStyleBackColor = true;
+            changeVoiceBtn.CheckedChanged += changeVoiceBtn_CheckedChanged;
             // 
             // insertVoiceCbb
             // 
@@ -205,13 +234,15 @@
             label2.TabIndex = 4;
             label2.Text = "->";
             // 
-            // numericUpDown2
+            // maxSpeedNud
             // 
-            numericUpDown2.Location = new Point(152, 60);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(49, 23);
-            numericUpDown2.TabIndex = 3;
-            numericUpDown2.TextAlign = HorizontalAlignment.Center;
+            maxSpeedNud.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            maxSpeedNud.Location = new Point(152, 60);
+            maxSpeedNud.Name = "maxSpeedNud";
+            maxSpeedNud.Size = new Size(49, 23);
+            maxSpeedNud.TabIndex = 3;
+            maxSpeedNud.TextAlign = HorizontalAlignment.Center;
+            maxSpeedNud.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // speedVideoCbb
             // 
@@ -224,13 +255,15 @@
             speedVideoCbb.UseVisualStyleBackColor = true;
             speedVideoCbb.CheckedChanged += speedVideoCbb_CheckedChanged;
             // 
-            // numericUpDown1
+            // minSpeedNud
             // 
-            numericUpDown1.Location = new Point(68, 60);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(49, 23);
-            numericUpDown1.TabIndex = 1;
-            numericUpDown1.TextAlign = HorizontalAlignment.Center;
+            minSpeedNud.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            minSpeedNud.Location = new Point(68, 60);
+            minSpeedNud.Name = "minSpeedNud";
+            minSpeedNud.Size = new Size(49, 23);
+            minSpeedNud.TabIndex = 1;
+            minSpeedNud.TextAlign = HorizontalAlignment.Center;
+            minSpeedNud.Value = new decimal(new int[] { 5, 0, 0, 65536 });
             // 
             // amountNud
             // 
@@ -241,11 +274,30 @@
             amountNud.TextAlign = HorizontalAlignment.Center;
             amountNud.ValueChanged += amountNud_ValueChanged;
             // 
+            // startGenerateBtn
+            // 
+            startGenerateBtn.Location = new Point(184, 5);
+            startGenerateBtn.Name = "startGenerateBtn";
+            startGenerateBtn.Size = new Size(114, 23);
+            startGenerateBtn.TabIndex = 9;
+            startGenerateBtn.Text = "Start Generate";
+            startGenerateBtn.UseVisualStyleBackColor = true;
+            startGenerateBtn.Click += startGenerateBtn_Click;
+            // 
+            // processBar
+            // 
+            processBar.Location = new Point(17, 735);
+            processBar.Name = "processBar";
+            processBar.Size = new Size(1428, 23);
+            processBar.Step = 1;
+            processBar.TabIndex = 13;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1784, 861);
+            Controls.Add(startGenerateBtn);
             Controls.Add(amountNud);
             Controls.Add(configGrB);
             Controls.Add(randomCb);
@@ -258,8 +310,10 @@
             groupBox1.ResumeLayout(false);
             configGrB.ResumeLayout(false);
             configGrB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            videoEndGrp.ResumeLayout(false);
+            videoStartGrp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)maxSpeedNud).EndInit();
+            ((System.ComponentModel.ISupportInitialize)minSpeedNud).EndInit();
             ((System.ComponentModel.ISupportInitialize)amountNud).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -279,12 +333,16 @@
         private CheckBox femaleVoiceCbb;
         private CheckBox maleVoiceCbb;
         private Label label2;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown maxSpeedNud;
         private CheckBox speedVideoCbb;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown minSpeedNud;
         private GroupBox videoEndGrp;
         private GroupBox videoStartGrp;
         private NumericUpDown amountNud;
         private ColumnHeader columnHeader1;
+        private CheckedListBox endBoxList;
+        private CheckedListBox startBoxList;
+        private Button startGenerateBtn;
+        private ProgressBar processBar;
     }
 }
