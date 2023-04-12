@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MinVideoEditor.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace MinVideoEditor.Workers
 {
-    public class SpeedConfig
+    public class SpeedConfig : IConfig
     {
-
+        
         public SpeedConfig(double min, double max)
         {
             Min = min; Max = max;
@@ -46,7 +47,11 @@ namespace MinVideoEditor.Workers
     }
     public class Config
     { 
-        public Config() { }
+        public Config() {
+            SpeedConfig = null;
+            SoundConfig = null;
+            ConcatConfig = null;
+        }
         public Config(bool isRandomConfig, int amount, SpeedConfig speedConfig = null, SoundConfig soundConfig = null, ConcatConfig concatConfig = null) {
             VideoPaths = new string[] { };
             IsRandomConfig = isRandomConfig;

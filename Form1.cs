@@ -52,5 +52,23 @@ namespace MinVideoEditor
                 mConfig.SaveToFile();
             }
         }
+
+        private void amountNud_ValueChanged(object sender, EventArgs e)
+        {
+            mConfig.Amount = (int)amountNud.Value;
+        }
+
+        private void randomCb_CheckedChanged(object sender, EventArgs e)
+        {
+            mConfig.IsRandomConfig = randomCb.Checked;
+        }
+
+        private void speedVideoCbb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (speedVideoCbb.Checked)
+            {
+                mConfig.SpeedConfig = new SpeedConfig();
+            }
+        }
     }
 }

@@ -31,6 +31,7 @@
             openVideoBtn = new Button();
             groupBox1 = new GroupBox();
             videoListLv = new ListView();
+            columnHeader1 = new ColumnHeader();
             label1 = new Label();
             randomCb = new CheckBox();
             configGrB = new GroupBox();
@@ -46,7 +47,6 @@
             speedVideoCbb = new CheckBox();
             numericUpDown1 = new NumericUpDown();
             amountNud = new NumericUpDown();
-            columnHeader1 = new ColumnHeader();
             groupBox1.SuspendLayout();
             configGrB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
@@ -84,6 +84,10 @@
             videoListLv.UseCompatibleStateImageBehavior = false;
             videoListLv.View = View.Details;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Width = 240;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -102,6 +106,7 @@
             randomCb.TabIndex = 6;
             randomCb.Text = "Ngẫu nhiên";
             randomCb.UseVisualStyleBackColor = true;
+            randomCb.CheckedChanged += randomCb_CheckedChanged;
             // 
             // configGrB
             // 
@@ -217,6 +222,7 @@
             speedVideoCbb.TabIndex = 2;
             speedVideoCbb.Text = "Tốc độ video: ";
             speedVideoCbb.UseVisualStyleBackColor = true;
+            speedVideoCbb.CheckedChanged += speedVideoCbb_CheckedChanged;
             // 
             // numericUpDown1
             // 
@@ -233,10 +239,7 @@
             amountNud.Size = new Size(57, 23);
             amountNud.TabIndex = 8;
             amountNud.TextAlign = HorizontalAlignment.Center;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Width = 240;
+            amountNud.ValueChanged += amountNud_ValueChanged;
             // 
             // Form1
             // 
