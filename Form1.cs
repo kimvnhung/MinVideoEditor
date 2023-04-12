@@ -21,7 +21,7 @@ namespace MinVideoEditor
             mConfig = new Config();
             mConfig.LoadFromFile();
 
-            
+
         }
 
         private void openVideoBtn_Click(object sender, EventArgs e)
@@ -169,6 +169,33 @@ namespace MinVideoEditor
             {
                 processBar.Value = e;
             });
+        }
+
+        private void startFilterTb_TextChanged(object sender, EventArgs e)
+        {
+            startBoxList.Items.Clear();
+            for(int i = 0;i< mConfig.VideoPaths.Length;i++)
+            {
+                string fileName = Path.GetFileName(mConfig.VideoPaths[i]);
+                if (fileName.ToLower().Contains(startFilterTb.Text.ToLower())){
+                    startBoxList.Items.Add(fileName);
+                    startBoxList.SetItemChecked(startBoxList.Items.Count - 1, true);
+                }
+            }
+        }
+
+        private void endFilterTb_TextChanged(object sender, EventArgs e)
+        {
+            endBoxList.Items.Clear();
+            for (int i = 0; i < mConfig.VideoPaths.Length; i++)
+            {
+                string fileName = Path.GetFileName(mConfig.VideoPaths[i]);
+                if (fileName.ToLower().Contains(endFilterTb.Text.ToLower()))
+                {
+                    endBoxList.Items.Add(fileName);
+                    endBoxList.SetItemChecked(endBoxList.Items.Count - 1, true);
+                }
+            }
         }
     }
 }

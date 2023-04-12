@@ -35,6 +35,7 @@
             label1 = new Label();
             randomCb = new CheckBox();
             configGrB = new GroupBox();
+            processBar = new ProgressBar();
             videoEndGrp = new GroupBox();
             endBoxList = new CheckedListBox();
             videoStartGrp = new GroupBox();
@@ -50,7 +51,8 @@
             minSpeedNud = new NumericUpDown();
             amountNud = new NumericUpDown();
             startGenerateBtn = new Button();
-            processBar = new ProgressBar();
+            startFilterTb = new TextBox();
+            endFilterTb = new TextBox();
             groupBox1.SuspendLayout();
             configGrB.SuspendLayout();
             videoEndGrp.SuspendLayout();
@@ -116,6 +118,8 @@
             // 
             // configGrB
             // 
+            configGrB.Controls.Add(endFilterTb);
+            configGrB.Controls.Add(startFilterTb);
             configGrB.Controls.Add(processBar);
             configGrB.Controls.Add(videoEndGrp);
             configGrB.Controls.Add(videoStartGrp);
@@ -135,10 +139,18 @@
             configGrB.TabStop = false;
             configGrB.Text = "Cấu hình ";
             // 
+            // processBar
+            // 
+            processBar.Location = new Point(17, 735);
+            processBar.Name = "processBar";
+            processBar.Size = new Size(1428, 23);
+            processBar.Step = 1;
+            processBar.TabIndex = 13;
+            // 
             // videoEndGrp
             // 
             videoEndGrp.Controls.Add(endBoxList);
-            videoEndGrp.Location = new Point(424, 164);
+            videoEndGrp.Location = new Point(414, 200);
             videoEndGrp.Name = "videoEndGrp";
             videoEndGrp.Size = new Size(350, 300);
             videoEndGrp.TabIndex = 12;
@@ -157,7 +169,7 @@
             // videoStartGrp
             // 
             videoStartGrp.Controls.Add(startBoxList);
-            videoStartGrp.Location = new Point(68, 164);
+            videoStartGrp.Location = new Point(58, 200);
             videoStartGrp.Name = "videoStartGrp";
             videoStartGrp.Size = new Size(350, 300);
             videoStartGrp.TabIndex = 11;
@@ -284,13 +296,21 @@
             startGenerateBtn.UseVisualStyleBackColor = true;
             startGenerateBtn.Click += startGenerateBtn_Click;
             // 
-            // processBar
+            // startFilterTb
             // 
-            processBar.Location = new Point(17, 735);
-            processBar.Name = "processBar";
-            processBar.Size = new Size(1428, 23);
-            processBar.Step = 1;
-            processBar.TabIndex = 13;
+            startFilterTb.Location = new Point(61, 171);
+            startFilterTb.Name = "startFilterTb";
+            startFilterTb.Size = new Size(100, 23);
+            startFilterTb.TabIndex = 14;
+            startFilterTb.TextChanged += startFilterTb_TextChanged;
+            // 
+            // endFilterTb
+            // 
+            endFilterTb.Location = new Point(417, 171);
+            endFilterTb.Name = "endFilterTb";
+            endFilterTb.Size = new Size(100, 23);
+            endFilterTb.TabIndex = 15;
+            endFilterTb.TextChanged += endFilterTb_TextChanged;
             // 
             // Form1
             // 
@@ -344,5 +364,7 @@
         private CheckedListBox startBoxList;
         private Button startGenerateBtn;
         private ProgressBar processBar;
+        private TextBox endFilterTb;
+        private TextBox startFilterTb;
     }
 }
