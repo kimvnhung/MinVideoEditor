@@ -36,6 +36,9 @@ namespace MinVideoEditor
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
+                videoListLv.Items.Clear();
+                startBoxList.Items.Clear();
+                endBoxList.Items.Clear();
                 mConfig.VideoPaths = openFile.FileNames;
                 for (int i = 0; i < mConfig.VideoPaths.Length; i++)
                 {

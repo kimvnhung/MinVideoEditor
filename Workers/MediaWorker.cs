@@ -1,7 +1,4 @@
-﻿using MediaToolkit.Model;
-using MediaToolkit.Options;
-using MediaToolkit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -68,40 +65,50 @@ namespace MinVideoEditor.Workers
                     }
                     int step = 100 / (concatcf.StartVideos.Count * concatcf.EndVideos.Count);
                     var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
-                    NReco.VideoConverter.ConcatSettings set = new NReco.VideoConverter.ConcatSettings();
-                    NReco.VideoConverter.ConvertSettings convertSettings = new NReco.VideoConverter.ConvertSettings { 
+                    ffMpeg.LogReceived += FfMpeg_LogReceived;
+                    NReco.VideoConverter.ConcatSettings set = new NReco.VideoConverter.ConcatSettings {
                         VideoFrameRate = 30
+                    };
+                    
+                    NReco.VideoConverter.ConvertSettings convertSettings = new NReco.VideoConverter.ConvertSettings { 
+                        VideoFrameRate = 30,
+                        VideoFrameSize = "2160x2700",
                     };
                     try
                     {
                         string startOutTemp = Path.GetDirectoryName(concatcf.StartVideos[0])+"/startTemp";
                         string endOutTemp = Path.GetDirectoryName(concatcf.EndVideos[0]) + "/endTemp";
-                        if(Directory.Exists(startOutTemp))
+                        try
                         {
-                            Directory.Delete(startOutTemp);   
-                        }
+                            if (Directory.Exists(startOutTemp))
+                            {
+                                Directory.Delete(startOutTemp,true);
+                            }
 
-                        Directory.CreateDirectory(startOutTemp);
-                        if (Directory.Exists(endOutTemp))
+                            Directory.CreateDirectory(startOutTemp);
+                            if (Directory.Exists(endOutTemp))
+                            {
+                                Directory.Delete(endOutTemp,true);
+                            }
+                            Directory.CreateDirectory(endOutTemp);
+                        }catch (Exception ex)
                         {
-                            Directory.Delete(endOutTemp);
+                            Utils.Log(ex.Message);
                         }
-                        Directory.CreateDirectory(endOutTemp);
-
                         for (int i = 0; i < concatcf.StartVideos.Count; i++)
                         {
                             ffMpeg.ConvertMedia(
                                 concatcf.StartVideos[i],
-                                NReco.VideoConverter.Format.mp4,
-                                startOutTemp+"/"+Path.GetFileName(concatcf.StartVideos[i]),
-                                NReco.VideoConverter.Format.mp4,
+                                Path.GetExtension(concatcf.StartVideos[i]).Substring(1),
+                                startOutTemp + "/" + Path.GetFileName(concatcf.StartVideos[i]),
+                                Path.GetExtension(concatcf.StartVideos[i]).Substring(1),
                                 convertSettings
                             );
                             concatcf.StartVideos[i] = startOutTemp + "/" + Path.GetFileName(concatcf.StartVideos[i]);
                             for (int j = 0; j < concatcf.EndVideos.Count; j++)
                             {
                                 mPercentage += step;
-                                if(i==0)
+                                if (i == 0)
                                 {
                                     ffMpeg.ConvertMedia(
                                         concatcf.EndVideos[j],
@@ -116,7 +123,6 @@ namespace MinVideoEditor.Workers
                                 {
                                     try
                                     {
-                                        ffMpeg.LogReceived += FfMpeg_LogReceived;
                                         ffMpeg.ConcatMedia(
                                             new string[] { concatcf.StartVideos[i], concatcf.EndVideos[j] },
                                             ouputPath + "/" + Path.GetFileNameWithoutExtension(concatcf.StartVideos[i]) + "_" + Path.GetFileNameWithoutExtension(concatcf.EndVideos[j]) + ".mp4",
@@ -132,8 +138,8 @@ namespace MinVideoEditor.Workers
                                 });
                             }
                         }
-                        Directory.Delete(startOutTemp);
-                        Directory.Delete(endOutTemp);
+                        Directory.Delete(startOutTemp, true);
+                        Directory.Delete(endOutTemp, true);
                     }catch(Exception ex)
                     {
                         Utils.Log(ex.Message);
@@ -148,7 +154,7 @@ namespace MinVideoEditor.Workers
 
         private void FfMpeg_LogReceived(object? sender, NReco.VideoConverter.FFMpegLogEventArgs e)
         {
-            Console.WriteLine(e.Data.ToString());
+            Utils.Log(e.Data.ToString());
         }
     }
 }

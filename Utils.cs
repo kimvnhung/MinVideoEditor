@@ -11,7 +11,7 @@ namespace MinVideoEditor
         public static void Log(string message)
         {
             string path = "./log.txt";
-            using (StreamWriter writer = new StreamWriter(path))
+            using (StreamWriter writer = new StreamWriter(path,true))
             {
                writer.WriteLine(message);
             }

@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "MediaToolkit/1.1.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net40/MediaToolkit.dll": {}
-        },
-        "runtime": {
-          "lib/net40/MediaToolkit.dll": {}
-        }
-      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -40,20 +31,6 @@
     }
   },
   "libraries": {
-    "MediaToolkit/1.1.0.1": {
-      "sha512": "R3u+udQOUDBGUzx4wOHsp6yiSLMdJle7a9E7JK4/btL4w/pdXAmNHP2JMe2Fpt35kLjKNE74oNKUM1hc6RceIA==",
-      "type": "package",
-      "path": "mediatoolkit/1.1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/readme.txt",
-        "lib/net20/MediaToolkit.dll",
-        "lib/net40/MediaToolkit.dll",
-        "mediatoolkit.1.1.0.1.nupkg.sha512",
-        "mediatoolkit.nuspec"
-      ]
-    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -102,7 +79,6 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MediaToolkit >= 1.1.0.1",
       "NReco.VideoConverter >= 1.2.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
@@ -152,10 +128,6 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
-          "MediaToolkit": {
-            "target": "Package",
-            "version": "[1.1.0.1, )"
-          },
           "NReco.VideoConverter": {
             "target": "Package",
             "version": "[1.2.0, )"
@@ -187,17 +159,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'MediaToolkit 1.1.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
-      "libraryId": "MediaToolkit",
-      "targetGraphs": [
-        "net6.0-windows7.0"
-      ]
-    }
-  ]
+  }
 }

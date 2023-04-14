@@ -22,7 +22,7 @@ namespace MinVideoEditor
                 Console.WriteLine(e.Message);
                 return;
             }
-            Console.SetOut(writer);
+            //Console.SetOut(writer);
             Console.WriteLine("*******************************************************");
             Console.WriteLine("This is new session of the debugging");
             Console.WriteLine("*******************************************************");
@@ -35,7 +35,7 @@ namespace MinVideoEditor
             Console.WriteLine("*******************************************************");
             Console.WriteLine("This is the finish session of the debugging");
             Console.WriteLine("*******************************************************");
-            Console.SetOut(oldOut);
+            //Console.SetOut(oldOut);
             writer.Close();
             ostrm.Close();
         }
