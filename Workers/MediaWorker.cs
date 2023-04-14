@@ -67,11 +67,11 @@ namespace MinVideoEditor.Workers
                     var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
                     ffMpeg.LogReceived += FfMpeg_LogReceived;
                     NReco.VideoConverter.ConcatSettings set = new NReco.VideoConverter.ConcatSettings {
-                        VideoFrameRate = 30
+                        VideoFrameRate = 60
                     };
                     
                     NReco.VideoConverter.ConvertSettings convertSettings = new NReco.VideoConverter.ConvertSettings { 
-                        VideoFrameRate = 30,
+                        VideoFrameRate = 60,
                         VideoFrameSize = "2160x2700",
                     };
                     try
