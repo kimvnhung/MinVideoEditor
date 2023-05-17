@@ -154,7 +154,7 @@ namespace MinVideoEditor.Workers
 
         private void FfMpeg_LogReceived(object? sender, NReco.VideoConverter.FFMpegLogEventArgs e)
         {
-            Utils.Log(e.Data.ToString());
+            //Utils.Log(e.Data.ToString());
         }
     }
 }
